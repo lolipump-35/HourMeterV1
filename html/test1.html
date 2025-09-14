@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
+    <link rel="stylesheet" href="/front/css/test1.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="inputContainer">
+      <div id="month-selector">
+        <span id="current-month"></span>
+        <select id="month-select" style="display: none"></select>
+      </div>
+
+      <div class="pie-container" id="pie-container">
+        <div class="pie" id="pie"></div>
+        <div class="pie-cover">
+          <span id="pie-percentage">0%</span>
+        </div>
+      </div>
+
+      <div id="hours-detail"></div>
+
+
+      <div class="daysRemaining">
+        <p>j-<span id="days-left"></span></p>
+      </div>
+
+      <div class="inputValue">
+        <input
+          type="number"
+          inputmode="decimal"
+          pattern="[0-9]*[.,]?[0-9]*"
+          id="inputNumber"
+        />
+
+        <select id="typePred" name="pred">
+          <option value="Porte à porte">Porte à porte</option>
+          <option value="TPS">TPS</option>
+          <option value="TPL">TPL</option>
+          <option value="Rue">Rue</option>
+          <option value="Etude">Etude</option>
+          <option value="Credit">Credit</option>
+        </select>
+
+        <button id="addOptionsInputValue">+</button>
+      </div>
+
+      <div id="moreInputsContainer">
+        <div class="moreInputs" id="firstMoreInputs">
+          <div class="moreInputsContent">
+            <div class="containerMoreInputs">
+              <div class="containerMoreInputsNumber">
+                <input
+                  type="number"
+                  inputmode="decimal"
+                  pattern="[0-9]*[.,]?[0-9]*"
+                  class="inputNumber"
+                  placeholder="Nombre"
+                />
+              </div>
+
+              <div class="containerMoreInputsSelect">
+                <select class="typePred" name="evenementPred">
+                  <option value="Premier contacte">Premier Contacte</option>
+                  <option value="Nouvelle visite">Nouvelle visite</option>
+                  <option value="Verset">Verset</option>
+                  <option value="Revus">Revus</option>
+                  <option value="Invitation">Invitation</option>
+                  <option value="Carte de visite">Carte de visite</option>
+                  <option value="Video">Video</option>
+                </select>
+              </div>
+
+              <button type="button" class="addOptionsmoreInputs">+</button>
+              <button type="button" class="removeMoreInputs">–</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="sendButton">Send</button>
+
+      <div class="log">
+        <button id="logButton">Log</button>
+      </div>
+
+      <div id="results"></div>
+    </section>
+  </body>
+  <script src="/front/js/test1.js"></script>
+</html>

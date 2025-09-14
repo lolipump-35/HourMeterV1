@@ -1,0 +1,302 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+/* #region month select */
+
+/* Conteneur du sélecteur au-dessus du camembert */
+#month-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform: translateY(5px); /* décale légèrement vers le bas */
+}
+
+/* Texte du mois (span) */
+#current-month {
+  font-size: 1.8rem; /* texte plus grand */
+  font-weight: bold;
+  color: #fff;       /* texte blanc */
+  background-color: #000; /* fond noir */
+  cursor: pointer;
+  padding: 10px 20px;      /* un peu plus grand que précédemment */
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+  text-align: center;      /* bien centré */
+}
+
+/* Select (au clic) : fond blanc et texte noir */
+#month-select {
+  font-size: 1rem;       /* même taille que le span */
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+  display: none;
+  transition: all 0.2s ease;
+  text-align: center;      /* centré */
+}
+
+
+
+/* #endregion month select */
+
+/* #region pie  */
+.pie-container {
+  position: relative;
+  width: 60vw; /* 80% de la largeur de la fenêtre */
+  height: 60vw; /* garder un cercle (hauteur = largeur) */
+  max-width: 60%; /* limite si tu veux que ce soit relatif au body */
+  margin: 0 auto; /* centrer horizontalement */
+  padding-bottom: 30px;
+}
+
+.pie {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#4caf50 0deg, #4caf50 0deg, #e0e0e0 0deg 360deg);
+  transition: background 0.5s ease;
+}
+
+.pie-cover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  width: 30%; /* taille proportionnelle au cercle */
+  height: 30%;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pie-percentage {
+  font-weight: bold;
+  font-size: 1.5rem; /* plus grand si le cercle grossit */
+}
+
+/* #endregion pie  */
+
+/* #region days remaining  */
+
+.daysRemaining {
+  position: relative;
+  top: -8vh;
+  height: 5vh;
+  width: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daysRemaining p {
+  color: white;
+  font-size: 20px;
+}
+
+/* #endregion days remaining  */
+
+/* #region inputvalue */
+
+/* number */
+.inputValue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  gap: 10px;
+  position: relative;
+  top: -10vh;
+}
+
+#inputNumber {
+  height: 50px;
+  width: 15vw;
+  border-radius: 10px;
+}
+
+/* select pred */
+#typePred {
+  height: 58px;
+  width: 25vw;
+  border-radius: 10px;
+}
+
+#pred {
+  height: 76px;
+  width: 30vw;
+  border-radius: 10px;
+}
+
+/* addOptions  */
+#addOptions {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+/* #endregion inputvalue */
+
+/* #region moreOptions  */
+/* Conteneur caché par défaut */
+#moreInputsContainer {
+  position: relative;
+  top: -11vh;
+  width: 90%;
+  margin: 0 auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+#moreInputsContainer.open {
+  max-height: 80vh; /* assez grand pour tous les blocs, scroll si nécessaire */
+  overflow-y: auto;
+  padding: 10px;
+}
+
+
+.moreInputsContent {
+  padding: 5px;
+  background: #f5f5f5;
+  margin-top: 10px;
+}
+
+.containerMoreInputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 50px;
+
+}
+
+.inputNumber {
+  width: 3s0px;
+  height: 30px;
+}
+
+  
+/* #endregion moreOptions  */
+
+/* #region button  */
+
+/* send  */
+#sendButton {
+  position: relative;
+  top: -13vh;
+  height: 60px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+/* log  */
+.log {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  width: 100vw;
+}
+
+#logButton {
+  position: relative;
+  top: -12vh;
+  height: 5vh;
+  width: 20vw;
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+}
+/* #endregion button  */
+
+/* #region results  */
+
+/* results   */
+#results {
+  position: relative;
+  top:  -10vh;
+  height: 60vh;
+  width: 90vw;
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  overflow-y: auto;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+}
+
+#results p {
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* items  */
+.item-container {
+  min-height: 2.5vh;
+  position: relative;
+  background: #f0f0f0;
+  color: black;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  width: 80vw;
+}
+
+/* options  */
+.options {
+  display: flex;
+  gap: 5px;
+  transform: translateX(110%);
+  transition: transform 0.3s ease;
+}
+
+.options.show {
+  transform: translateX(00%);
+}
+
+.options button {
+  cursor: pointer;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  height: 3vh;
+}
+
+/* #endregion results  */
