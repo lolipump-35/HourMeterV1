@@ -106,26 +106,18 @@ function updatePieWithCategories(filteredItems) {
     pie.style.background = `conic-gradient(#e0e0e0 0deg 360deg)`;
     piePercentage.textContent = "0%";
     currentPourcentage = 0;
+    // 🔹 Met à jour le compteur d’heures
+    document.getElementById("total-hours").textContent = "Total heures : 0";
     return;
   }
 
   const realTargetPercentage = (total / indexPourcentage) * 100; // peut dépasser 100
   const visualTargetPercentage = Math.min(realTargetPercentage, 100); // camembert max 100%
 
-  // Commence à partir de 0 pour éviter les restes du mois précédent
   const start = 0;
   const endVisual = visualTargetPercentage;
   const duration = 800;
   const startTime = performance.now();
-
-  const colors = {
-    "Porte à porte": "#A8E6CF",
-    "TPS": "#FFD3B6",
-    "TPL": "#FFAAA5",
-    "Rue": "#DCE775",
-    "Etude": "#81D4FA",
-    "Credit": "#B39DDB",
-  };
 
   function animate(now) {
     const progress = Math.min((now - startTime) / duration, 1);
@@ -138,7 +130,7 @@ function updatePieWithCategories(filteredItems) {
     let cumulative = 0;
     const segments = breakdown.map(b => {
       const deg = (b.value / total) * degrees;
-      const seg = `${colors[b.type] || "#CCCCCC"} ${cumulative}deg ${cumulative + deg}deg`;
+      const seg = `${typeColors[b.type] || "#CCCCCC"} ${cumulative}deg ${cumulative + deg}deg`;
       cumulative += deg;
       return seg;
     });
@@ -152,10 +144,22 @@ function updatePieWithCategories(filteredItems) {
       requestAnimationFrame(animate);
     } else {
       currentPourcentage = endVisual;
+      // 🔹 Quand l'animation est terminée, on met à jour le total
+      document.getElementById("total-hours").textContent = `Total heures : ${total}`;
     }
   }
 
   requestAnimationFrame(animate);
+}
+
+
+
+
+function updateTotalHours(filteredItems = null) {
+  const itemsToUse = filteredItems || items; 
+  // additionne toutes les valeurs
+  const total = itemsToUse.reduce((sum, item) => sum + item.value, 0);
+  document.getElementById("total-hours").textContent = `Total heures : ${total}`;
 }
 
 
