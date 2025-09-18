@@ -83,11 +83,7 @@ function compterEtAdditionnerInputsNumber(filteredItems = null) {
     total += mainVal;
     breakdownMap[item.predType] = (breakdownMap[item.predType] || 0) + mainVal;
 
-    (item.moreInputs || []).forEach(mi => {
-      const val = parseFloat(mi.value) || 0;
-      total += val;
-      breakdownMap[mi.predType] = (breakdownMap[mi.predType] || 0) + val;
-    });
+    
   });
 
   const breakdown = Object.keys(breakdownMap).map(type => ({ type, value: breakdownMap[type] }));
